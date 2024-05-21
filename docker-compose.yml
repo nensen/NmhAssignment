@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nmhassignment:
+    image: ${DOCKER_REGISTRY-}nmhassignment
+    build:
+      context: .
+      dockerfile: NmhAssignment/Dockerfile
+    depends_on:
+      - postgres
+      - rabbitmq
+    ports:
+      - "8080:80"
+    restart: on-failure
+
+volumes:
+  postgres_data:
