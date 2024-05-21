@@ -1,6 +1,7 @@
 # NmhAssignment
 
 Prequisities: docker
+
 How to run:
 
 a) as application
