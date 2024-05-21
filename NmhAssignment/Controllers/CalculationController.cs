@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace NmhAssignment.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CalculationController : ControllerBase
     {

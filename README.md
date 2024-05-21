@@ -9,4 +9,5 @@ a) as application
 
 b) from visual studio to see console output
 1. open project
+2. select docker-compose as single startup project
 2. run Docker Compose launch profile
